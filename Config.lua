@@ -2,7 +2,7 @@ Config = {
 -- Change the language of the menu here!.
 -- Note fr and de are google translated, if you would like to help out with translation / just fix it for your server check below and change translations yourself
 -- try en, fr, de or sv.
-	MenuLanguage = 'en',	
+	MenuLanguage = 'nl',	
 -- Set this to true to enable some extra prints
 	DebugDisplay = false,
 -- Set this to false if you have something else on X, and then just use /e c to cancel emotes.
@@ -20,8 +20,8 @@ Config = {
 -- You can change the header image for the f3 menu here
 -- Use a 512 x 128 image!
 -- NOte this might cause an issue of the image getting stuck on peoples screens
-	CustomMenuEnabled = false,
-	MenuImage = "https://i.imgur.com/kgzvDwQ.png",
+	CustomMenuEnabled = true,
+	MenuImage = "https://i.imgur.com/p5KzzgL.png",
 -- You can change the menu position here
 	MenuPosition = "right", -- (left, right)
 -- You can disable the Ragdoll keybinding here.
@@ -48,7 +48,7 @@ Config.KeybindKeys = {
 }
 
 Config.Languages = {
-  ['en'] = {
+    ['en'] = {
         ['emotes'] = 'Emotes',
         ['danceemotes'] = "🕺 Dance Emotes",
         ['propemotes'] = "📦 Prop Emotes",
@@ -94,8 +94,55 @@ Config.Languages = {
         ['notvalidkey'] = "is not a valid key.",
         ['keybinds'] = "🔢 Keybinds",
         ['keybindsinfo'] = "Use"
-  },
-  ['fr'] = {
+    },
+    ['nl'] = {
+        ['emotes'] = 'Emotes',
+        ['danceemotes'] = "🕺 Dans Emotes",
+        ['propemotes'] = "📦 Object Emotes",
+        ['favoriteemotes'] = "🌟 Favorieten",
+        ['favoriteinfo'] = "Selecteer hier een emote om deze als favoriet in te stellen.",
+        ['rfavorite'] = "Reset favoriet",
+        ['prop2info'] = "❓ Object Emotes kunnen aan het einde worden gevonden",
+        ['set'] = "Zet (",
+        ['setboundemote'] = ") om deze emote te binden?",
+        ['newsetemote'] = "~w~ is nu een gebinde emote, duw op ~g~CapsLock~w~ om deze te gebruiken.",
+        ['cancelemote'] = "Annuleer Emote",
+        ['cancelemoteinfo'] = "~r~X~w~ Annuleert de momenteel spelende emote",
+        ['walkingstyles'] = "Wandelstijlen",
+        ['resetdef'] = "Reset naar standaard",
+        ['normalreset'] = "Normaal (Reset)",
+        ['moods'] = "Stemmingen",
+        ['infoupdate'] = "Informatie",
+        ['infoupdateav'] = "Informatie (Update beschikbaar)",
+        ['infoupdateavtext'] = "Er is een update beschikbaar, download de nieuwste versie van ~y~https://github.com/andristum/dpemotes~w~",
+        ['suggestions'] = "Suggesties?",
+        ['suggestionsinfo'] = "'dullpear_dev' op FiveM-forums voor suggesties voor functies/emotes! ✉️",
+        ['notvaliddance'] = "is geen geldige dans.",
+        ['notvalidemote'] = "is geen geldige emote.",
+        ['nocancel'] = "Geen emote om te annuleren.",
+        ['maleonly'] = "Deze emote is alleen voor mannen, sorry!",
+        ['emotemenucmd'] = "Doe /emotemenu voor een menu.",
+        ['shareemotes'] = "👫 Gedeelde Emotes",
+        ['shareemotesinfo'] = "Nodig een persoon in de buurt uit om te emote",
+        ['sharedanceemotes'] = "🕺 Gedeelde dansen",
+        ['notvalidsharedemote'] = "is geen geldige gedeelde emote.",
+        ['sentrequestto'] = "Verzoek verzonden naar: ~y~",
+        ['nobodyclose'] = "Niemand is ~r~dicht~w~ genoeg.",
+        ['doyouwanna'] = "~y~Y~w~ om te accepteren, ~r~L~w~ om te weigeren (~g~",
+        ['refuseemote'] = "Emote geweigerd.",
+        ['makenearby'] = "laat de speler in de buurt spelen",
+        ['camera'] = "Duw op ~y~G~w~ om de flitser van de camera te gebruiken.",
+        ['makeitrain'] = "Duw op ~y~G~w~ om het te laten regenen.",
+        ['pee'] = "Houd ~y~G~w~ ingedrukt om te plassen.",
+        ['spraychamp'] = "Houd ~y~G~w~ ingedrukt om champagne te spuiten",
+        ['bound'] = "Gebonden ",
+        ['to'] = "om",
+        ['currentlyboundemotes'] = " Momenteel gebonden emotes:",
+        ['notvalidkey'] = "is geen geldige sleutel.",
+        ['keybinds'] = "🔢 Sneltoetsen",
+        ['keybindsinfo'] = "Gebruik"
+    },
+    ['fr'] = {
         ['emotes'] = 'Emotes',
         ['danceemotes'] = "🕺 Emotes de danse",
         ['propemotes'] = "📦 Em Prop Emotes",
@@ -141,8 +188,8 @@ Config.Languages = {
         ['notvalidkey'] = "n'est pas une clé valide.",
         ['keybinds'] = "🔢 Liens Clés",
         ['keybindsinfo'] = "Use"
-  },
-  ['de'] = {
+    },
+    ['de'] = {
         ['emotes'] = 'Emotes',
         ['danceemotes'] = "🕺 Tanz-Emotes",
         ['propemotes'] = "📦 Prop-Emotes",
