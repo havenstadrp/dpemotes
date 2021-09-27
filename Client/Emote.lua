@@ -92,6 +92,12 @@ RegisterCommand('emotemenu', function(source, args, raw)
     end
 end)
 
+RegisterCommand('em', function(source, args, raw)
+    if not PlayerData.metadata['inlaststand'] and not PlayerData.metadata['isdead'] then
+        OpenEmoteMenu()
+    end
+end)
+
 RegisterCommand('emotes', function(source, args, raw)
     if not PlayerData.metadata['inlaststand'] and not PlayerData.metadata['isdead'] then
         EmotesOnCommand()
@@ -127,7 +133,7 @@ AddEventHandler('animations:client:SmokeWeed', function()
   Citizen.CreateThread(function()
     while SmokingWeed do
       Citizen.Wait(10000)
-      TriggerServerEvent('hud:Server:RelieveStress', math.random(15, 18))
+      TriggerServerEvent('hud:server:RelieveStress', math.random(15, 18))
       RelieveCount = RelieveCount + 1
       if RelieveCount == 6 then
         if ChosenDict == "MaleScenario" and IsInAnimation then
