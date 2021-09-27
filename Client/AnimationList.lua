@@ -2056,4 +2056,64 @@ DP.PropEmotes = {
        EmoteLoop = true,
        EmoteMoving = true,
    }},
+   ["Receive Blowjob"] = {"misscarsteal2pimpsex", "pimpsex_punter", "Receive Blowjob", "Give Blowjob", AnimationOptions =
+   {
+    EmoteMoving = false,
+    EmoteDuration = 30000,
+    SyncOffsetFront = 0.63
+   }},
+   ["Give Blowjob"] = {"misscarsteal2pimpsex", "pimpsex_hooker", "Give Blowjob", "Receive Blowjob", AnimationOptions =
+   {
+    EmoteMoving = false,
+    EmoteDuration = 30000,
+    SyncOffsetFront = 0.63
+   }},
+   ["Street Sex Male"] = {"misscarsteal2pimpsex", "shagloop_pimp", "Street Sex Male", "Street Sex Female", AnimationOptions =
+   {
+    EmoteMoving = false,
+    EmoteLoop = true,
+    SyncOffsetFront = 0.50
+   }},
+   ["Street Sex Female"] = {"misscarsteal2pimpsex", "shagloop_hooker", "Street Sex Female", "Street Sex Male", AnimationOptions =
+   {
+    EmoteMoving = false,
+    EmoteLoop = true,
+    SyncOffsetFront = -0.50
+   }},
+   ["Anaal Ontvangen"] = {"rcmpaparazzo_2", "shag_loop_poppy", "Anal Ontvangen", "Street Sex Male", AnimationOptions =
+   {
+    EmoteMoving = false,
+    EmoteLoop = true,
+    SyncOffsetFront = -0.50
+   }},
+   ["Anaal Geven"] = {"rcmpaparazzo_2", "shag_loop_a", "Anal Geven", "Street Sex Male", AnimationOptions =
+   {
+    EmoteMoving = false,
+    EmoteLoop = true,
+    SyncOffsetFront = -0.50
+   }},
+   ["Wagen BJ Ontvangen"] = {"mini@prostitutes@sexnorm_veh", "bj_loop_male", "Wagen BJ Ontvangen", "Street Sex Male", AnimationOptions =
+   {
+    EmoteMoving = false,
+    EmoteLoop = true,
+    SyncOffsetFront = -0.50
+   }},
+   ["Wagen BJ Geven"] = {"mini@prostitutes@sexnorm_veh", "bj_loop_prostitute", "Wagen BJ Geven", "Street Sex Male", AnimationOptions =
+   {
+    EmoteMoving = false,
+    EmoteLoop = true,
+    SyncOffsetFront = -0.50
+   }},
+   ["Wagen Sex Ontvangen"] = {"mini@prostitutes@sexnorm_veh", "sex_loop_male", "Wagen Sex Ontvangen", "Street Sex Male", AnimationOptions =
+   {
+    EmoteMoving = false,
+    EmoteLoop = true,
+    SyncOffsetFront = -0.50
+   }},
+   ["Wagen Sex Geven"] = {"mini@prostitutes@sexnorm_veh", "sex_loop_prostitute", "Wagen Sex Geven", "Street Sex Male", AnimationOptions =
+   {
+    EmoteMoving = false,
+    EmoteLoop = true,
+    SyncOffsetFront = -0.50
+   }},
 }
