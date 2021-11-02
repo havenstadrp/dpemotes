@@ -46,7 +46,7 @@ DP.Walks = {
   ["Default Female"] = {"move_f@multiplayer"},
   ["Default Male"] = {"move_m@multiplayer"},
   ["Drunk"] = {"move_m@drunk@a"},
-  ["Drunk"] = {"move_m@drunk@slightlydrunk"},
+  ["Drunk1"] = {"move_m@drunk@slightlydrunk"},
   ["Drunk2"] = {"move_m@buzzed"},
   ["Drunk3"] = {"move_m@drunk@verydrunk"},
   ["Femme"] = {"move_f@femme@"},
@@ -377,7 +377,7 @@ DP.Emotes = {
    {
         Prop = "prop_ld_flow_bottle",
         PropBone = 18905,
-        PropPlacement = {0.12, 0.028, 0.001, 10.0, 175.0},
+        PropPlacement = {0.12, 0.008, 0.03, 240.0, -60.0},
         EmoteMoving = true,
         EmoteLoop = true,
    }},
@@ -1341,7 +1341,7 @@ DP.Emotes = {
    {
        EmoteLoop = true,
    }},
-   ["lapdance3"] = {"mini@strip_club@private_dance@part2", "priv_dance_p2", "Lapdance 3", AnimationOptions =
+   ["lapdance4"] = {"mini@strip_club@private_dance@part2", "priv_dance_p2", "Lapdance 4", AnimationOptions =
    {
        EmoteLoop = true,
    }},

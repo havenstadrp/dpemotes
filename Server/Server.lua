@@ -22,7 +22,7 @@ if Config.SqlKeybinding then
 	RegisterServerEvent("dp:ServerKeybindExist")
 	AddEventHandler('dp:ServerKeybindExist', function()
 		local src = source local srcid = GetPlayerIdentifier(source)
-		exports.oxmysql:execute("SELECT * FROM dpkeybinds WHERE `id`=@id;", { ['@id'] = srcid }, function(dpkeybinds)
+		exports.oxmysql:fetch("SELECT * FROM dpkeybinds WHERE `id`=@id;", { ['@id'] = srcid }, function(dpkeybinds)
 			if dpkeybinds[1] then
 				TriggerClientEvent("dp:ClientKeybindExist", src, true)
 			else
@@ -37,7 +37,7 @@ if Config.SqlKeybinding then
 	RegisterServerEvent("dp:ServerKeybindCreate")
 	AddEventHandler("dp:ServerKeybindCreate", function()
 		local src = source local srcid = GetPlayerIdentifier(source)
-		exports.oxmysql:execute("INSERT INTO dpkeybinds (`id`, `keybind1`, `emote1`, `keybind2`, `emote2`, `keybind3`, `emote3`, `keybind4`, `emote4`, `keybind5`, `emote5`, `keybind6`, `emote6`) VALUES (@id, @keybind1, @emote1, @keybind2, @emote2, @keybind3, @emote3, @keybind4, @emote4, @keybind5, @emote5, @keybind6, @emote6);", { id = srcid, keybind1 = "num4", emote1 = "", keybind2 = "num5", emote2 = "", keybind3 = "num6", emote3 = "", keybind4 = "num7", emote4 = "", keybind5 = "num8", emote5 = "", keybind6 = "num9", emote6 = ""}, function(created)
+		exports.oxmysql:insert("INSERT INTO dpkeybinds (`id`, `keybind1`, `emote1`, `keybind2`, `emote2`, `keybind3`, `emote3`, `keybind4`, `emote4`, `keybind5`, `emote5`, `keybind6`, `emote6`) VALUES (@id, @keybind1, @emote1, @keybind2, @emote2, @keybind3, @emote3, @keybind4, @emote4, @keybind5, @emote5, @keybind6, @emote6);", { id = srcid, keybind1 = "num4", emote1 = "", keybind2 = "num5", emote2 = "", keybind3 = "num6", emote3 = "", keybind4 = "num7", emote4 = "", keybind5 = "num8", emote5 = "", keybind6 = "num9", emote6 = ""}, function(created)
 			print("[dp] ^2"..GetPlayerName(src).."^7 got created!") 
 			TriggerClientEvent("dp:ClientKeybindGet", src, "num4", "", "num5", "", "num6", "", "num7", "", "num8", "", "num8", "")
 		end)
@@ -47,7 +47,7 @@ if Config.SqlKeybinding then
 	AddEventHandler("dp:ServerKeybindGrab", function()
 		local src = source local srcid = GetPlayerIdentifier(source)
 
-		exports.oxmysql:execute("SELECT keybind1, emote1, keybind2, emote2, keybind3, emote3, keybind4, emote4, keybind5, emote5, keybind6, emote6 FROM `dpkeybinds` WHERE `id` = @id", { ['@id'] = srcid }, function(kb)
+		exports.oxmysql:fetch("SELECT keybind1, emote1, keybind2, emote2, keybind3, emote3, keybind4, emote4, keybind5, emote5, keybind6, emote6 FROM `dpkeybinds` WHERE `id` = @id", { ['@id'] = srcid }, function(kb)
 			if kb[1].keybind1 ~= nil then
 				TriggerClientEvent("dp:ClientKeybindGet", src, kb[1].keybind1, kb[1].emote1, kb[1].keybind2, kb[1].emote2, kb[1].keybind3, kb[1].emote3, kb[1].keybind4, kb[1].emote4, kb[1].keybind5, kb[1].emote5, kb[1].keybind6, kb[1].emote6)
 			else
