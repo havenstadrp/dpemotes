@@ -1,4 +1,4 @@
-
+local QBCore = exports['qb-core']:GetCoreObject()
 -----------------------------------------------------------------------------------------------------
 -- Shared Emotes Syncing  ---------------------------------------------------------------------------
 -----------------------------------------------------------------------------------------------------
@@ -8,7 +8,7 @@ AddEventHandler("ServerEmoteRequest", function(target, emotename, etype)
 	TriggerClientEvent("ClientEmoteRequestReceive", target, emotename, etype)
 end)
 
-RegisterServerEvent("ServerValidEmote") 
+RegisterServerEvent("ServerValidEmote")
 AddEventHandler("ServerValidEmote", function(target, requestedemote, otheremote)
 	TriggerClientEvent("SyncPlayEmote", source, otheremote, source)
 	TriggerClientEvent("SyncPlayEmoteSource", target, requestedemote)
@@ -38,7 +38,7 @@ if Config.SqlKeybinding then
 	AddEventHandler("dp:ServerKeybindCreate", function()
 		local src = source local srcid = GetPlayerIdentifier(source)
 		exports.oxmysql:insert("INSERT INTO dpkeybinds (`id`, `keybind1`, `emote1`, `keybind2`, `emote2`, `keybind3`, `emote3`, `keybind4`, `emote4`, `keybind5`, `emote5`, `keybind6`, `emote6`) VALUES (@id, @keybind1, @emote1, @keybind2, @emote2, @keybind3, @emote3, @keybind4, @emote4, @keybind5, @emote5, @keybind6, @emote6);", { id = srcid, keybind1 = "num4", emote1 = "", keybind2 = "num5", emote2 = "", keybind3 = "num6", emote3 = "", keybind4 = "num7", emote4 = "", keybind5 = "num8", emote5 = "", keybind6 = "num9", emote6 = ""}, function(created)
-			print("[dp] ^2"..GetPlayerName(src).."^7 got created!") 
+			print("[dp] ^2"..GetPlayerName(src).."^7 got created!")
 			TriggerClientEvent("dp:ClientKeybindGet", src, "num4", "", "num5", "", "num6", "", "num7", "", "num8", "", "num8", "")
 		end)
 	end)
@@ -92,4 +92,50 @@ end
 
 QBCore.Functions.CreateUseableItem("walkstick", function(source, item)
     TriggerClientEvent("dp:Client:UseWalkingStick", source)
+end)
+
+-----------------------------------------------------------------------------------------------------
+-- Commands -------- --------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------------------------
+
+QBCore.Commands.Add('e', 'Play an emote', {{ name="emotename", help="dance, camera, sit or any valid emote."}}, true, function(source, args)
+    TriggerClientEvent('animations:client:PlayEmote', source, args)
+end)
+
+QBCore.Commands.Add('emote', 'Play an emote', {{ name="emotename", help="dance, camera, sit or any valid emote."}}, true, function(source, args)
+    TriggerClientEvent('animations:client:PlayEmote', source, args)
+end)
+
+if Config.SqlKeybinding then
+    QBCore.Commands.Add('emotebind', 'Bind an emote', {{ name="key", help="num4, num5, num6, num7. num8, num9. Numpad 4-9!"}, { name="emotename", help="dance, camera, sit or any valid emote."}}, true, function(source, args)
+		TriggerClientEvent('animations:client:BindEmote', source, args)
+    end)
+
+    QBCore.Commands.Add('emotebinds', 'Check your currently bound emotes.', {}, false, function(source)
+        TriggerClientEvent('animations:client:EmoteBinds', source)
+    end)
+end
+
+QBCore.Commands.Add('emotemenu', 'Open dpemotes menu (F3) by default.', {}, false, function(source)
+	TriggerClientEvent('animations:client:EmoteMenu', source)
+end)
+
+QBCore.Commands.Add('em', 'Open dpemotes menu (F3) by default.', {}, false, function(source)
+    TriggerClientEvent('animations:client:EmoteMenu', source)
+end)
+
+QBCore.Commands.Add('emotes', 'List available emotes.', {}, false, function(source)
+	TriggerClientEvent('animations:client:ListEmotes', source)
+end)
+
+QBCore.Commands.Add('walk', 'Set your walkingstyle.', {{ name="style", help="/walks for a list of valid styles"}}, true, function(source, args)
+	TriggerClientEvent('animations:client:Walk', source, args)
+end)
+
+QBCore.Commands.Add('walks', 'List available walking styles.', {}, false, function(source)
+    TriggerClientEvent('animations:client:ListWalks', source)
+end)
+
+QBCore.Commands.Add('nearby', 'Share emote with a nearby player.', {{ name="emotename", help="hug, handshake, bro or any valid shared emote."}}, true, function(source, args)
+	TriggerClientEvent('animations:client:Nearby', source, args)
 end)

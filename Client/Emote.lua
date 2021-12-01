@@ -1,3 +1,4 @@
+QBCore = exports['qb-core']:GetCoreObject()
 -- You probably shouldnt touch these.
 local AnimationDuration = -1
 local ChosenAnimation = ""
@@ -46,77 +47,51 @@ end)
 -- Commands / Events --------------------------------------------------------------------------------
 -----------------------------------------------------------------------------------------------------
 
-Citizen.CreateThread(function()
-    TriggerEvent('chat:addSuggestion', '/e', 'Play an emote', {{ name="emotename", help="dance, camera, sit or any valid emote."}})
-    TriggerEvent('chat:addSuggestion', '/e', 'Play an emote', {{ name="emotename", help="dance, camera, sit or any valid emote."}})
-    TriggerEvent('chat:addSuggestion', '/emote', 'Play an emote', {{ name="emotename", help="dance, camera, sit or any valid emote."}})
-    if Config.SqlKeybinding then
-      TriggerEvent('chat:addSuggestion', '/emotebind', 'Bind an emote', {{ name="key", help="num4, num5, num6, num7. num8, num9. Numpad 4-9!"}, { name="emotename", help="dance, camera, sit or any valid emote."}})
-      TriggerEvent('chat:addSuggestion', '/emotebinds', 'Check your currently bound emotes.')
-    end
-    TriggerEvent('chat:addSuggestion', '/emotemenu', 'Open dpemotes menu (F3) by default.')
-    TriggerEvent('chat:addSuggestion', '/emotes', 'List available emotes.')
-    TriggerEvent('chat:addSuggestion', '/walk', 'Set your walkingstyle.', {{ name="style", help="/walks for a list of valid styles"}})
-    TriggerEvent('chat:addSuggestion', '/walks', 'List available walking styles.')
-end)
-
-RegisterCommand('e', function(source, args, raw)
+RegisterNetEvent('animations:client:PlayEmote', function(args)
     if not PlayerData.metadata['inlaststand'] and not PlayerData.metadata['isdead'] then
-        EmoteCommandStart(source, args, raw)
-    end
-end)
-
-RegisterCommand('emote', function(source, args, raw)
-    if not PlayerData.metadata['inlaststand'] and not PlayerData.metadata['isdead'] then
-        EmoteCommandStart(source, args, raw)
+        EmoteCommandStart(source, args)
     end
 end)
 
 if Config.SqlKeybinding then
-    RegisterCommand('emotebind', function(source, args, raw)
+    RegisterNetEvent('animations:client:BindEmote', function(args)
         if not PlayerData.metadata['inlaststand'] and not PlayerData.metadata['isdead'] then
-            EmoteBindStart(source, args, raw)
+            EmoteBindStart(source, args)
         end
     end)
 
-    RegisterCommand('emotebinds', function(source, args, raw)
+    RegisterNetEvent('animations:client:EmoteBinds', function()
         if not PlayerData.metadata['inlaststand'] and not PlayerData.metadata['isdead'] then
-            EmoteBindsStart(source, args, raw)
+            EmoteBindsStart()
         end
     end)
 end
 
-RegisterCommand('emotemenu', function(source, args, raw)
+RegisterNetEvent('animations:client:EmoteMenu', function()
     if not PlayerData.metadata['inlaststand'] and not PlayerData.metadata['isdead'] then
         OpenEmoteMenu()
     end
 end)
 
-RegisterCommand('em', function(source, args, raw)
-    if not PlayerData.metadata['inlaststand'] and not PlayerData.metadata['isdead'] then
-        OpenEmoteMenu()
-    end
-end)
-
-RegisterCommand('emotes', function(source, args, raw)
+RegisterNetEvent('animations:client:ListEmotes', function()
     if not PlayerData.metadata['inlaststand'] and not PlayerData.metadata['isdead'] then
         EmotesOnCommand()
     end
 end)
 
-RegisterCommand('walk', function(source, args, raw)
+RegisterNetEvent('animations:client:Walk', function(args)
     if not PlayerData.metadata['inlaststand'] and not PlayerData.metadata['isdead'] then
-        WalkCommandStart(source, args, raw)
+        WalkCommandStart(source, args)
     end
 end)
 
-RegisterCommand('walks', function(source, args, raw)
+RegisterNetEvent('animations:client:ListWalks', function()
     if not PlayerData.metadata['inlaststand'] and not PlayerData.metadata['isdead'] then
         WalksOnCommand()
     end
 end)
 
--- Added 
+-- Added
 
 CanDoEmote = true
 SmokingWeed = false
@@ -145,13 +120,13 @@ AddEventHandler('animations:client:SmokeWeed', function()
           IsInAnimation = false
           DebugPrint("Forced scenario exit")
         end
-      
+
         if IsInAnimation then
           ClearPedTasks(PlayerPedId())
           DestroyAllProps()
           IsInAnimation = false
         end
-      
+
         if SmokingWeed then
           SmokingWeed = false
           RelieveCount = 0
@@ -421,7 +396,7 @@ function OnEmotePlay(EmoteName)
     return
   end
 
-  if ChosenDict == "MaleScenario" or "Scenario" then 
+  if ChosenDict == "MaleScenario" or "Scenario" then
     CheckGender()
     if ChosenDict == "MaleScenario" then if InVehicle then return end
       if PlayerGender == "male" then
@@ -444,7 +419,7 @@ function OnEmotePlay(EmoteName)
       TaskStartScenarioInPlace(PlayerPedId(), ChosenAnimation, 0, true)
       DebugPrint("Playing scenario = ("..ChosenAnimation..")")
       IsInAnimation = true
-    return end 
+    return end
   end
 
   LoadAnim(ChosenDict)
@@ -473,7 +448,7 @@ function OnEmotePlay(EmoteName)
   end
 
   if EmoteName.AnimationOptions then
-    if EmoteName.AnimationOptions.EmoteDuration == nil then 
+    if EmoteName.AnimationOptions.EmoteDuration == nil then
       EmoteName.AnimationOptions.EmoteDuration = -1
       AttachWait = 0
     else
