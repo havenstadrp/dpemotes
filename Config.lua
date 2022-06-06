@@ -2,7 +2,7 @@ Config = {
 -- Change the language of the menu here!.
 -- Note fr and de are google translated, if you would like to help out with translation / just fix it for your server check below and change translations yourself
 -- try en, fr, de or sv.
-	MenuLanguage = 'nl',	
+	MenuLanguage = 'nl',
 -- Set this to true to enable some extra prints
 	DebugDisplay = false,
 -- Set this to false if you have something else on X, and then just use /e c to cancel emotes.
@@ -53,7 +53,6 @@ Config.Languages = {
         ['danceemotes'] = "🕺 Dance Emotes",
         ['animalemotes'] = "🐩 Animal Emotes",
         ['propemotes'] = "📦 Prop Emotes",
-        ['adultmotes'] = "💦 18+ Emotes",
         ['favoriteemotes'] = "🌟 Favorite",
         ['favoriteinfo'] = "Select an emote here to set it as your favorite.",
         ['rfavorite'] = "Reset favorite",
